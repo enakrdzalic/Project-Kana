@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Kana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 1 — Level Select
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="select-screen" class="screen active">
+    <header class="select-header">
+      <h1 class="logo">PROJECT <span>KANA</span></h1>
+      <p class="subtitle">Type the kana before it reaches you</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="hiragana">Hiragana</button>
+      <button class="tab-btn" data-tab="katakana">Katakana</button>
+    </div>
+
+    <div class="column-grid-wrapper">
+      <!-- Hiragana tab -->
+      <div id="tab-hiragana" class="tab-content active">
+        <div class="group-label">Basic</div>
+        <div class="column-grid" id="grid-hira-basic"></div>
+        <div class="group-label">Dakuten</div>
+        <div class="column-grid" id="grid-hira-dakuten"></div>
+        <div class="group-label">Combinations</div>
+        <div class="column-grid" id="grid-hira-combo"></div>
+      </div>
+
+      <!-- Katakana tab -->
+      <div id="tab-katakana" class="tab-content">
+        <div class="group-label">Basic</div>
+        <div class="column-grid" id="grid-kata-basic"></div>
+        <div class="group-label">Dakuten</div>
+        <div class="column-grid" id="grid-kata-dakuten"></div>
+        <div class="group-label">Combinations</div>
+        <div class="column-grid" id="grid-kata-combo"></div>
+      </div>
+    </div>
+
+    <div class="select-footer">
+      <div class="speed-selector">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-speed="easy">Easy</button>
+        <button class="speed-btn active" data-speed="normal">Normal</button>
+        <button class="speed-btn" data-speed="hard">Hard</button>
+        <button class="speed-btn" data-speed="expert">Expert</button>
+      </div>
+      <div class="select-actions">
+        <span id="selected-count" class="selected-count">0 columns selected</span>
+        <button id="play-btn" class="play-btn" disabled>PLAY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 2 — Game
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="game-screen" class="screen">
+    <div class="game-hud">
+      <div class="hud-left">
+        <div class="hud-label">SCORE</div>
+        <div id="score-display" class="score-display">100%</div>
+      </div>
+      <div class="hud-center">
+        <div id="judgment-text" class="judgment-text"></div>
+      </div>
+    </div>
+
+    <!-- Side combo display -->
+    <div class="combo-side">
+      <div class="combo-side-label">COMBO</div>
+      <div id="combo-display" class="combo-display">0</div>
+    </div>
+
+    <canvas id="game-canvas"></canvas>
+
+    <div class="input-area">
+      <div id="typed-display" class="typed-display"></div>
+      <div id="progress-bar-wrap" class="progress-bar-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 3 — Results
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="result-screen" class="screen">
+    <div class="result-card">
+      <div id="fc-badge" class="fc-badge hidden">FULL COMBO</div>
+      <h2 class="result-title">Results</h2>
+
+      <div class="result-stats">
+        <div class="stat-row">
+          <span class="stat-label">Accuracy</span>
+          <span id="res-accuracy" class="stat-value accent">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Max Combo</span>
+          <span id="res-combo" class="stat-value">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Hit</span>
+          <span id="res-hit" class="stat-value hit-color">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Miss</span>
+          <span id="res-miss" class="stat-value miss-color">—</span>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button id="retry-btn" class="action-btn secondary">Play Again</button>
+        <button id="back-btn" class="action-btn primary">Select Levels</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
